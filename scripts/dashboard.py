@@ -3,21 +3,51 @@ import duckdb
 import pandas as pd
 import plotly.express as px
 import os
+import shutil
+import time
 
 # Page Config
 st.set_page_config(page_title="Commodity Data Explorer", layout="wide")
 
-# Database Connection
+# Database Configuration
 DB_PATH = 'data/commodity_data.duckdb'
+DB_COPY_PATH = 'data/commodity_data_view.duckdb'
 
 @st.cache_resource
 def get_connection():
-    return duckdb.connect(DB_PATH, read_only=True)
+    """
+    Connects to the database. 
+    If the main DB is locked, it tries to copy it to a temp file and read that.
+    """
+    try:
+        # Try connecting to the main DB in read-only mode
+        con = duckdb.connect(DB_PATH, read_only=True)
+        # Test a simple query to ensure we actually have access
+        con.execute("SELECT 1")
+        return con
+    except Exception as e:
+        st.warning(f"Main database is locked (likely ingestion running). Using a snapshot copy instead.")
+        
+        # Check if we need to refresh the copy (e.g., older than 5 minutes)
+        should_copy = True
+        if os.path.exists(DB_COPY_PATH):
+            mtime = os.path.getmtime(DB_COPY_PATH)
+            if time.time() - mtime < 300: # 5 minutes
+                should_copy = False
+        
+        if should_copy:
+            try:
+                shutil.copy2(DB_PATH, DB_COPY_PATH)
+            except Exception as copy_error:
+                st.error(f"Could not copy database: {copy_error}")
+                st.stop()
+        
+        return duckdb.connect(DB_COPY_PATH, read_only=True)
 
 try:
     con = get_connection()
 except Exception as e:
-    st.error(f"Could not connect to database at {DB_PATH}: {e}")
+    st.error(f"Could not connect to database: {e}")
     st.stop()
 
 # Sidebar - Dataset Selection
@@ -58,7 +88,6 @@ series_df = con.execute(query).fetchdf()
 st.dataframe(series_df, use_container_width=True, selection_mode="single-row", on_select="rerun")
 
 # Series Detail View
-# Note: Streamlit's dataframe selection is a bit new, let's use a selectbox for robust selection if they want to drill down
 series_ids = series_df['series_id'].tolist()
 
 if series_ids:

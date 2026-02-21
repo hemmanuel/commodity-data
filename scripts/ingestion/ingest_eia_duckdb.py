@@ -4,21 +4,41 @@ import zipfile
 import glob
 import argparse
 import sys
+import json
+import time
 
 # Configuration
 DATA_DIR = 'data/raw/eia'
 DB_PATH = 'data/commodity_data.duckdb'
 TEMP_DIR = 'data/temp'
+STATUS_FILE = 'data/ingestion_status.json'
+
+def update_status(datasets_processed, total_datasets, current_dataset, series_count, rows_count):
+    """Writes status to a JSON file for the monitor to read without DB locks."""
+    status = {
+        "datasets_processed": datasets_processed,
+        "total_datasets": total_datasets,
+        "current_dataset": current_dataset,
+        "series_count": series_count,
+        "rows_count": rows_count,
+        "last_updated": time.time(),
+        "status": "running"
+    }
+    try:
+        # Atomic write (write to temp then rename)
+        temp_file = STATUS_FILE + '.tmp'
+        with open(temp_file, 'w') as f:
+            json.dump(status, f)
+        os.replace(temp_file, STATUS_FILE)
+    except Exception as e:
+        print(f"Warning: Could not update status file: {e}")
 
 def setup_database(con):
     """Creates the necessary tables if they don't exist."""
     print("Setting up database schema...")
     
-    con.execute("DROP TABLE IF EXISTS eia_data")
-    con.execute("DROP TABLE IF EXISTS eia_series")
-    
     con.execute("""
-        CREATE TABLE eia_series (
+        CREATE TABLE IF NOT EXISTS eia_series (
             series_id VARCHAR PRIMARY KEY,
             name VARCHAR,
             units VARCHAR,
@@ -33,11 +53,10 @@ def setup_database(con):
     """)
     
     con.execute("""
-        CREATE TABLE eia_data (
+        CREATE TABLE IF NOT EXISTS eia_data (
             series_id VARCHAR,
             date DATE,
             value DOUBLE
-            -- FOREIGN KEY (series_id) REFERENCES eia_series(series_id) -- Disabled for speed/flexibility
         );
     """)
     
@@ -47,14 +66,6 @@ def setup_database(con):
 def process_zip_file(con, zip_path):
     """Processes a single ZIP file and ingests it into DuckDB."""
     dataset_name = os.path.basename(zip_path).replace('.zip', '')
-    
-    # Check if already processed (simple check: do we have series from this dataset?)
-    # This is optional, but good for resuming.
-    # count = con.execute(f"SELECT COUNT(*) FROM eia_series WHERE dataset = '{dataset_name}'").fetchone()[0]
-    # if count > 0:
-    #     print(f"Skipping {dataset_name}: Already appears to be processed ({count} series found).")
-    #     return True
-
     print(f"Processing dataset: {dataset_name}...")
     
     try:
@@ -123,10 +134,6 @@ def process_zip_file(con, zip_path):
             """)
             
             print("Inserting time series data...")
-            # We use distinct to avoid duplicates if re-running
-            # But for speed, we might skip distinct if we trust the source.
-            # Let's just insert.
-            
             con.execute("""
                     INSERT INTO eia_data
                     SELECT 
@@ -186,17 +193,50 @@ def main():
         print(f"Limiting processing to {args.limit} files.")
         zip_files = zip_files[:args.limit]
     
-    for zip_path in zip_files:
-        process_zip_file(con, zip_path)
+    total_files = len(zip_files)
+    processed_count = 0
+    
+    # Initial status update
+    update_status(0, total_files, "Starting...", 0, 0)
+
+    for i, zip_path in enumerate(zip_files):
+        dataset_name = os.path.basename(zip_path)
+        
+        # Get current stats for status update
+        try:
+            series_count = con.execute("SELECT COUNT(*) FROM eia_series").fetchone()[0]
+            rows_count = con.execute("SELECT COUNT(*) FROM eia_data").fetchone()[0]
+        except:
+            series_count = 0
+            rows_count = 0
+            
+        update_status(processed_count, total_files, dataset_name, series_count, rows_count)
+        
+        if process_zip_file(con, zip_path):
+            processed_count += 1
     
     print("\nProcessing batch complete.")
     
-    # Verification stats
+    # Final status update
     try:
-        count_series = con.execute("SELECT COUNT(*) FROM eia_series").fetchone()[0]
-        count_data = con.execute("SELECT COUNT(*) FROM eia_data").fetchone()[0]
-        print(f"Total Series in DB: {count_series}")
-        print(f"Total Data Points in DB: {count_data}")
+        series_count = con.execute("SELECT COUNT(*) FROM eia_series").fetchone()[0]
+        rows_count = con.execute("SELECT COUNT(*) FROM eia_data").fetchone()[0]
+        
+        print(f"Total Series in DB: {series_count}")
+        print(f"Total Data Points in DB: {rows_count}")
+        
+        # Write "completed" status
+        with open(STATUS_FILE, 'w') as f:
+            json.dump({
+                "datasets_processed": processed_count,
+                "total_datasets": total_files,
+                "current_dataset": "Done",
+                "series_count": series_count,
+                "rows_count": rows_count,
+                "last_updated": time.time(),
+                "status": "completed"
+            }, f)
+            
     except:
         pass
 
