@@ -1,3 +1,6 @@
+import pandas as pd
+import requests
+import io
 import duckdb
 import os
 import zipfile
@@ -167,6 +170,79 @@ def process_zip_file(con, zip_path):
             pass
         return False
 
+def process_eia_storage_xls(con):
+    """Downloads and ingests the EIA Weekly Natural Gas Underground Storage XLS directly."""
+    print("=== Processing EIA Weekly Underground Storage ===")
+    url = "https://www.eia.gov/dnav/ng/xls/NG_STOR_WKLY_S1_W.xls"
+    headers = {"User-Agent": "Mozilla/5.0"}
+    
+    print(f"Downloading {url}...")
+    try:
+        resp = requests.get(url, headers=headers)
+        if resp.status_code != 200:
+            print(f"Failed to download EIA data. Status: {resp.status_code}")
+            return False
+            
+        # Save to disk so there is a raw artifact
+        raw_path = os.path.join(DATA_DIR, 'NG_STOR_WKLY_S1_W.xls')
+        with open(raw_path, 'wb') as f:
+            f.write(resp.content)
+        print(f"Saved raw file to {raw_path}")
+            
+        # Parse Excel
+        df = pd.read_excel(raw_path, sheet_name='Data 1', skiprows=2)
+        if 'Date' not in df.columns:
+            print("Invalid format: 'Date' column not found.")
+            return False
+            
+        df['Date'] = pd.to_datetime(df['Date']).dt.date
+        
+        # Melt to long format
+        id_vars = ['Date']
+        value_vars = [col for col in df.columns if col != 'Date']
+        melted = df.melt(id_vars=id_vars, value_vars=value_vars, var_name='name', value_name='value')
+        
+        # Generate series metadata
+        series_data = []
+        for name in value_vars:
+            # Generate a cleaner series ID
+            short_name = name.replace('Weekly ', '').replace(' Natural Gas Working Underground Storage (Billion Cubic Feet)', '').strip()
+            series_id = "EIA_NG_STORAGE_" + short_name.upper().replace(' ', '_').replace('__', '_')
+            
+            series_data.append({
+                'series_id': series_id,
+                'name': name,
+                'units': 'Billion Cubic Feet',
+                'frequency': 'W',
+                'description': name,
+                'source': 'EIA',
+                'dataset': 'NG_STOR_WKLY',
+                'last_updated': str(df['Date'].max()),
+                'start_date': str(df['Date'].min()),
+                'end_date': str(df['Date'].max())
+            })
+            
+            # Update the name in melted to be the series_id
+            melted.loc[melted['name'] == name, 'series_id'] = series_id
+            
+        # Insert metadata
+        df_series = pd.DataFrame(series_data)
+        con.execute("DELETE FROM eia_series WHERE dataset = 'NG_STOR_WKLY'")
+        con.execute("INSERT INTO eia_series SELECT * FROM df_series")
+        print(f"Inserted {len(df_series)} series metadata records.")
+        
+        # Insert data
+        melted = melted[['series_id', 'Date', 'value']].rename(columns={'Date': 'date'})
+        melted = melted.dropna(subset=['value'])
+        con.execute("DELETE FROM eia_data WHERE series_id IN (SELECT series_id FROM df_series)")
+        con.execute("INSERT INTO eia_data SELECT * FROM melted")
+        print(f"Inserted {len(melted)} data points.")
+        return True
+        
+    except Exception as e:
+        print(f"Error processing EIA Storage XLS: {e}")
+        return False
+
 def main():
     parser = argparse.ArgumentParser(description='Ingest EIA data into DuckDB.')
     parser.add_argument('--limit', type=int, help='Limit the number of files to process')
@@ -189,7 +265,7 @@ def main():
         zip_files = zip_files[args.skip:]
     
     # Apply limit
-    if args.limit:
+    if args.limit is not None:
         print(f"Limiting processing to {args.limit} files.")
         zip_files = zip_files[:args.limit]
     
@@ -216,6 +292,9 @@ def main():
             processed_count += 1
     
     print("\nProcessing batch complete.")
+    
+    # Process EIA Weekly Storage XLS
+    process_eia_storage_xls(con)
     
     # Final status update
     try:
