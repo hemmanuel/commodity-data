@@ -1,0 +1,1021 @@
+{
+  "props": {
+    "pageProps": {
+      "datasetId": 0,
+      "metadata": {
+        "asset_title": "Form No. 552 - Download Data",
+        "created_at": "2026-02-13T20:52:43.711Z",
+        "data_set_security_level": "Public",
+        "dataset_title": "Form 552 Master Table",
+        "description": "Database of Page 1 (Identification of Respondent) Database and Page 4 (Purchase and Sales Information) of Annual Report of Natural Gas Transactions Form (FERC No. 552)",
+        "industry": "Natural Gas",
+        "data_last_updated": "2026-02-16T14:08:26.212Z",
+        "pfdp_asset_id": 0,
+        "pfdp_dataset_id": 0,
+        "pfdp_url": "form-no.-552-download-data/form-552-master-table",
+        "point_of_contact_email": "form552@ferc.gov",
+        "point_of_contact_name": "Form 552 Compliance Staff",
+        "sort_column": "Year_of_Report_End DESC,Form552_id DESC",
+        "program_office": "Office of Energy Policy and Innovation",
+        "hide_column": "pkid"
+      },
+      "format": [
+        {
+          "column_name": "Form552_id",
+          "formatting": "SortCast",
+          "data_type": "INT"
+        },
+        {
+          "column_name": "Initial_Submission",
+          "formatting": "CapitalizeFormatter",
+          "data_type": "Boolean"
+        },
+        {
+          "column_name": "Reporting_Co_Is_Affiliate",
+          "formatting": "CapitalizeFormatter",
+          "data_type": "Boolean"
+        },
+        {
+          "column_name": "Reporting_Co_Is_Same_As_Respondent",
+          "formatting": "CapitalizeFormatter",
+          "data_type": "Boolean"
+        },
+        {
+          "column_name": "Resubmission",
+          "formatting": "CapitalizeFormatter",
+          "data_type": "Boolean"
+        },
+        {
+          "column_name": "Date_of_Report",
+          "formatting": "DateTimeFormatter-enUS-short",
+          "data_type": "DateTime"
+        },
+        {
+          "column_name": "Revision_No",
+          "formatting": null,
+          "data_type": "integer"
+        },
+        {
+          "column_name": "Year_of_Report_End",
+          "formatting": "YearIntFormatter",
+          "data_type": "INT"
+        },
+        {
+          "column_name": "Principal_Office_Address",
+          "formatting": null,
+          "data_type": "text"
+        },
+        {
+          "column_name": "Principal_Office_City",
+          "formatting": null,
+          "data_type": "text"
+        },
+        {
+          "column_name": "Principal_Office_State",
+          "formatting": null,
+          "data_type": "text"
+        },
+        {
+          "column_name": "Principal_Office_Zip",
+          "formatting": null,
+          "data_type": "text"
+        },
+        {
+          "column_name": "Reporting_Company",
+          "formatting": null,
+          "data_type": "text"
+        },
+        {
+          "column_name": "Respondent",
+          "formatting": null,
+          "data_type": "text"
+        },
+        {
+          "column_name": "Respondent_Previous_Name",
+          "formatting": null,
+          "data_type": "text"
+        },
+        {
+          "column_name": "Respondent_Date_Of_Name_Change",
+          "formatting": "DateTimeFormatter-enUS-short",
+          "data_type": "DateTime"
+        },
+        {
+          "column_name": "Respondent_Contact_Address",
+          "formatting": null,
+          "data_type": "text"
+        },
+        {
+          "column_name": "Respondent_Contact_City",
+          "formatting": null,
+          "data_type": "text"
+        },
+        {
+          "column_name": "Respondent_Contact_Name",
+          "formatting": null,
+          "data_type": "text"
+        },
+        {
+          "column_name": "Respondent_Contact_Title",
+          "formatting": null,
+          "data_type": "text"
+        },
+        {
+          "column_name": "Respondent_Contact_Email",
+          "formatting": null,
+          "data_type": "text"
+        },
+        {
+          "column_name": "Respondent_Contact_Phone",
+          "formatting": null,
+          "data_type": "text"
+        },
+        {
+          "column_name": "Respondent_Contact_State",
+          "formatting": null,
+          "data_type": "text"
+        },
+        {
+          "column_name": "Respondent_Contact_Zip",
+          "formatting": null,
+          "data_type": "text"
+        },
+        {
+          "column_name": "Schedule_Price_Indexing_Date_Revised",
+          "formatting": null,
+          "data_type": "timestamp without time zone"
+        },
+        {
+          "column_name": "Schedule_Price_Indexing_Remarks",
+          "formatting": null,
+          "data_type": "text"
+        },
+        {
+          "column_name": "Schedule_Price_Indexing_Date_Revised_Continued",
+          "formatting": null,
+          "data_type": "timestamp without time zone"
+        },
+        {
+          "column_name": "Schedule_Price_Indexing_Remarks_Continued",
+          "formatting": null,
+          "data_type": "text"
+        },
+        {
+          "column_name": "Schedule_Purchase_And_Sales_Information_Date_Revised",
+          "formatting": null,
+          "data_type": "timestamp without time zone"
+        },
+        {
+          "column_name": "Schedule_Purchase_And_Sales_Information_Remarks",
+          "formatting": null,
+          "data_type": "text"
+        },
+        {
+          "column_name": "Schedule_Reporting_Companies_Date_Revised",
+          "formatting": null,
+          "data_type": "timestamp without time zone"
+        },
+        {
+          "column_name": "Schedule_Reporting_Companies_Remarks",
+          "formatting": null,
+          "data_type": "text"
+        },
+        {
+          "column_name": "Signature",
+          "formatting": null,
+          "data_type": "text"
+        },
+        {
+          "column_name": "Signature_Date",
+          "formatting": "DateTimeFormatter-enUS-short",
+          "data_type": "DateTime"
+        },
+        {
+          "column_name": "Signature_Name",
+          "formatting": null,
+          "data_type": "text"
+        },
+        {
+          "column_name": "Signature_Title",
+          "formatting": null,
+          "data_type": "text"
+        },
+        {
+          "column_name": "Sum_Differences_Explanation_Purchases",
+          "formatting": null,
+          "data_type": "text"
+        },
+        {
+          "column_name": "Sum_Differences_Explanation_Sales",
+          "formatting": null,
+          "data_type": "text"
+        },
+        {
+          "column_name": "NYMEX_Plus_Contracts_Purchases",
+          "formatting": null,
+          "data_type": "numeric"
+        },
+        {
+          "column_name": "NYMEX_Plus_Contracts_Sales",
+          "formatting": null,
+          "data_type": "numeric"
+        },
+        {
+          "column_name": "Volume_TBtu_Purchase",
+          "formatting": null,
+          "data_type": "numeric"
+        },
+        {
+          "column_name": "Volume_TBtu_Sales",
+          "formatting": null,
+          "data_type": "numeric"
+        },
+        {
+          "column_name": "As_Physical_Basis_Transactions_Purchases",
+          "formatting": null,
+          "data_type": "numeric"
+        },
+        {
+          "column_name": "As_Physical_Basis_Transactions_Sales",
+          "formatting": null,
+          "data_type": "numeric"
+        },
+        {
+          "column_name": "NextDay_Delivery_Purchases",
+          "formatting": null,
+          "data_type": "numeric"
+        },
+        {
+          "column_name": "NextDay_Delivery_Sales",
+          "formatting": null,
+          "data_type": "numeric"
+        },
+        {
+          "column_name": "Next_Day_Delivery_Gas_Price_Indices_Purchases",
+          "formatting": null,
+          "data_type": "numeric"
+        },
+        {
+          "column_name": "Next_Day_Delivery_Gas_Price_Indices_Sales",
+          "formatting": null,
+          "data_type": "numeric"
+        },
+        {
+          "column_name": "Next_Month_Delivery_Gas_Price_Indices_Purchases",
+          "formatting": null,
+          "data_type": "numeric"
+        },
+        {
+          "column_name": "Next_Month_Delivery_Purchases",
+          "formatting": null,
+          "data_type": "numeric"
+        },
+        {
+          "column_name": "Next_Month_Delivery_Gas_Price_Indices_Sales",
+          "formatting": null,
+          "data_type": "numeric"
+        },
+        {
+          "column_name": "Next_Month_Delivery_Sales",
+          "formatting": null,
+          "data_type": "numeric"
+        },
+        {
+          "column_name": "SubmssionDate",
+          "formatting": null,
+          "data_type": "timestamp without time zone"
+        },
+        {
+          "column_name": "SubmissionId",
+          "formatting": null,
+          "data_type": "text"
+        },
+        {
+          "column_name": "pkid",
+          "formatting": null,
+          "data_type": "integer"
+        }
+      ],
+      "dataDict": [
+        {
+          "attribute": "Principal_Office_Address",
+          "mapping": "Principal Office Address",
+          "column_id": 9,
+          "sql_type": "STRING",
+          "description": "Represents the principal office address of the respondent.",
+          "description_url": "",
+          "identifier_type": "",
+          "nullable": "",
+          "format": "",
+          "validations": "",
+          "validation_url": ""
+        },
+        {
+          "attribute": "Principal_Office_City",
+          "mapping": "Principal Office City",
+          "column_id": 10,
+          "sql_type": "STRING",
+          "description": "Specifies the city where the principal office of the respondent is located.",
+          "description_url": "",
+          "identifier_type": "",
+          "nullable": "",
+          "format": "",
+          "validations": "",
+          "validation_url": ""
+        },
+        {
+          "attribute": "Principal_Office_State",
+          "mapping": "Principal Office State",
+          "column_id": 11,
+          "sql_type": "STRING",
+          "description": "Represents the state where the principal office of the respondent is located.",
+          "description_url": "",
+          "identifier_type": "",
+          "nullable": "",
+          "format": "",
+          "validations": "",
+          "validation_url": ""
+        },
+        {
+          "attribute": "Principal_Office_Zip",
+          "mapping": "Principal Office Zip",
+          "column_id": 12,
+          "sql_type": "STRING",
+          "description": "Specifies the zip code of the principal office of the respondent.",
+          "description_url": "",
+          "identifier_type": "",
+          "nullable": "",
+          "format": "",
+          "validations": "",
+          "validation_url": ""
+        },
+        {
+          "attribute": "Reporting_Company",
+          "mapping": "Reporting Company",
+          "column_id": 13,
+          "sql_type": "STRING",
+          "description": "The person, corporation, licensee, agency, authority, or other legal entity or instrumentality on whose behalf the report is being submitted by the \u201cRespondent.\u201d",
+          "description_url": "",
+          "identifier_type": "",
+          "nullable": "",
+          "format": "",
+          "validations": "",
+          "validation_url": ""
+        },
+        {
+          "attribute": "Respondent",
+          "mapping": "Respondent",
+          "column_id": 14,
+          "sql_type": "STRING",
+          "description": "The person, corporation, licensee, agency, authority, or other legal entity or instrumentality that is submitting the report either on its own behalf, or on behalf of itself and/or its Affiliates.",
+          "description_url": "",
+          "identifier_type": "",
+          "nullable": "",
+          "format": "",
+          "validations": "",
+          "validation_url": ""
+        },
+        {
+          "attribute": "Respondent_Previous_Name",
+          "mapping": "Respondent Previous Name",
+          "column_id": 15,
+          "sql_type": "STRING",
+          "description": "Represents the previous name of the respondent (if applicable).",
+          "description_url": "",
+          "identifier_type": "",
+          "nullable": "",
+          "format": "",
+          "validations": "",
+          "validation_url": ""
+        },
+        {
+          "attribute": "Respondent_Date_Of_Name_Change",
+          "mapping": "Respondent Date Of Name Change",
+          "column_id": 16,
+          "sql_type": "STRING",
+          "description": "Specifies the date when the name of the respondent changed (if applicable).",
+          "description_url": "",
+          "identifier_type": "",
+          "nullable": "",
+          "format": "",
+          "validations": "",
+          "validation_url": ""
+        },
+        {
+          "attribute": "Respondent_Contact_Address",
+          "mapping": "Respondent Contact Address",
+          "column_id": 17,
+          "sql_type": "STRING",
+          "description": "Represents the contact address of the respondent.",
+          "description_url": "",
+          "identifier_type": "",
+          "nullable": "",
+          "format": "",
+          "validations": "",
+          "validation_url": ""
+        },
+        {
+          "attribute": "Respondent_Contact_City",
+          "mapping": "Respondent Contact City",
+          "column_id": 18,
+          "sql_type": "STRING",
+          "description": "Specifies the city where the contact address of the respondent is located.",
+          "description_url": "",
+          "identifier_type": "",
+          "nullable": "",
+          "format": "",
+          "validations": "",
+          "validation_url": ""
+        },
+        {
+          "attribute": "Respondent_Contact_Name",
+          "mapping": "Respondent Contact Name",
+          "column_id": 19,
+          "sql_type": "STRING",
+          "description": "Represents the name of the contact person at the respondent's address.",
+          "description_url": "",
+          "identifier_type": "",
+          "nullable": "",
+          "format": "",
+          "validations": "",
+          "validation_url": ""
+        },
+        {
+          "attribute": "As_Physical_Basis_Transactions_Sales",
+          "mapping": "As Physical Basis Transactions Sales",
+          "column_id": 44,
+          "sql_type": "DOUBLE",
+          "description": "Represents the volume of physical basis sales in TBtus.",
+          "description_url": "",
+          "identifier_type": "",
+          "nullable": "",
+          "format": "",
+          "validations": "",
+          "validation_url": ""
+        },
+        {
+          "attribute": "NextDay_Delivery_Purchases",
+          "mapping": "NextDay Delivery Purchases",
+          "column_id": 45,
+          "sql_type": "DOUBLE",
+          "description": "Represents the volume of fixed-price next-day delivery purchases in TBtus.",
+          "description_url": "",
+          "identifier_type": "",
+          "nullable": "",
+          "format": "",
+          "validations": "",
+          "validation_url": ""
+        },
+        {
+          "attribute": "NextDay_Delivery_Sales",
+          "mapping": "NextDay Delivery Sales",
+          "column_id": 46,
+          "sql_type": "DOUBLE",
+          "description": "Represents the volume of fixed-price next-day delivery sales in TBtus.",
+          "description_url": "",
+          "identifier_type": "",
+          "nullable": "",
+          "format": "",
+          "validations": "",
+          "validation_url": ""
+        },
+        {
+          "attribute": "Next_Day_Delivery_Gas_Price_Indices_Purchases",
+          "mapping": "Next Day Delivery Gas Price Indices Purchases",
+          "column_id": 47,
+          "sql_type": "DOUBLE",
+          "description": "Represents the volume of gas price indices purchased for next-day delivery in TBtus.",
+          "description_url": "",
+          "identifier_type": "",
+          "nullable": "",
+          "format": "",
+          "validations": "",
+          "validation_url": ""
+        },
+        {
+          "attribute": "Next_Day_Delivery_Gas_Price_Indices_Sales",
+          "mapping": "Next Day Delivery Gas Price Indices Sales",
+          "column_id": 48,
+          "sql_type": "DOUBLE",
+          "description": "Represents the volume of gas price indices sold for next-day delivery in TBtus.",
+          "description_url": "",
+          "identifier_type": "",
+          "nullable": "",
+          "format": "",
+          "validations": "",
+          "validation_url": ""
+        },
+        {
+          "attribute": "Next_Month_Delivery_Gas_Price_Indices_Purchases",
+          "mapping": "Next Month Delivery Gas Price Indices Purchases",
+          "column_id": 49,
+          "sql_type": "DOUBLE",
+          "description": "Represents the volume of gas price indices purchased for next-month delivery in TBtus.",
+          "description_url": "",
+          "identifier_type": "",
+          "nullable": "",
+          "format": "",
+          "validations": "",
+          "validation_url": ""
+        },
+        {
+          "attribute": "Next_Month_Delivery_Purchases",
+          "mapping": "Next Month Delivery Purchases",
+          "column_id": 50,
+          "sql_type": "DOUBLE",
+          "description": "Represents the volume of fixed-price next-month delivery purchases in TBtus.",
+          "description_url": "",
+          "identifier_type": "",
+          "nullable": "",
+          "format": "",
+          "validations": "",
+          "validation_url": ""
+        },
+        {
+          "attribute": "Next_Month_Delivery_Gas_Price_Indices_Sales",
+          "mapping": "Next Month Delivery Gas Price Indices Sales",
+          "column_id": 51,
+          "sql_type": "DOUBLE",
+          "description": "Represents the volume of gas price indices sold for next-month delivery in TBtus.",
+          "description_url": "",
+          "identifier_type": "",
+          "nullable": "",
+          "format": "",
+          "validations": "",
+          "validation_url": ""
+        },
+        {
+          "attribute": "Next_Month_Delivery_Sales",
+          "mapping": "Next Month Delivery Sales",
+          "column_id": 52,
+          "sql_type": "DOUBLE",
+          "description": "Represents the volume of fixed-price next-month delivery sales in TBtus.",
+          "description_url": "",
+          "identifier_type": "",
+          "nullable": "",
+          "format": "",
+          "validations": "",
+          "validation_url": ""
+        },
+        {
+          "attribute": "SubmssionDate",
+          "mapping": "SubmssionDate",
+          "column_id": 53,
+          "sql_type": "STRING",
+          "description": "Represents the date when the report was submitted to the FERC. Format: YYYY-MM-DD.",
+          "description_url": "",
+          "identifier_type": "",
+          "nullable": "",
+          "format": "",
+          "validations": "",
+          "validation_url": ""
+        },
+        {
+          "attribute": "SubmissionId",
+          "mapping": "SubmissionId",
+          "column_id": 54,
+          "sql_type": "BIGINT",
+          "description": "Unique identifier for the submission.",
+          "description_url": "",
+          "identifier_type": "",
+          "nullable": "",
+          "format": "",
+          "validations": "",
+          "validation_url": ""
+        },
+        {
+          "attribute": "Respondent_Contact_Title",
+          "mapping": "Respondent Contact Title",
+          "column_id": 20,
+          "sql_type": "STRING",
+          "description": "Specifies the title of the contact person at the respondent's address.",
+          "description_url": "",
+          "identifier_type": "",
+          "nullable": "",
+          "format": "",
+          "validations": "",
+          "validation_url": ""
+        },
+        {
+          "attribute": "Respondent_Contact_Email",
+          "mapping": "Respondent Contact Email",
+          "column_id": 21,
+          "sql_type": "STRING",
+          "description": "Represents the email address of the respondent for communication and contact purposes.",
+          "description_url": "",
+          "identifier_type": "",
+          "nullable": "",
+          "format": "",
+          "validations": "",
+          "validation_url": ""
+        },
+        {
+          "attribute": "Respondent_Contact_Phone",
+          "mapping": "Respondent Contact Phone",
+          "column_id": 22,
+          "sql_type": "STRING",
+          "description": "Represents the phone number of the respondent for communication and contact purposes.",
+          "description_url": "",
+          "identifier_type": "",
+          "nullable": "",
+          "format": "",
+          "validations": "",
+          "validation_url": ""
+        },
+        {
+          "attribute": "Respondent_Contact_State",
+          "mapping": "Respondent Contact State",
+          "column_id": 23,
+          "sql_type": "STRING",
+          "description": "Represents the state where the respondent is located.",
+          "description_url": "",
+          "identifier_type": "",
+          "nullable": "",
+          "format": "",
+          "validations": "",
+          "validation_url": ""
+        },
+        {
+          "attribute": "Respondent_Contact_Zip",
+          "mapping": "Respondent Contact Zip",
+          "column_id": 24,
+          "sql_type": "STRING",
+          "description": "Represents the zip code where the respondent is located.",
+          "description_url": "",
+          "identifier_type": "",
+          "nullable": "",
+          "format": "",
+          "validations": "",
+          "validation_url": ""
+        },
+        {
+          "attribute": "Schedule_Price_Indexing_Date_Revised",
+          "mapping": "Schedule Price Indexing Date Revised",
+          "column_id": 25,
+          "sql_type": "STRING",
+          "description": "Represents the date of revision to the Schedule of Reporting Companies and Price Index Reporting (page 3).",
+          "description_url": "",
+          "identifier_type": "",
+          "nullable": "",
+          "format": "",
+          "validations": "",
+          "validation_url": ""
+        },
+        {
+          "attribute": "Schedule_Price_Indexing_Remarks",
+          "mapping": "Schedule Price Indexing Remarks",
+          "column_id": 26,
+          "sql_type": "STRING",
+          "description": "Represents any remarks or notes related to revisions to Schedule of Reporting Companies and Price Index Reporting (page 3)",
+          "description_url": "",
+          "identifier_type": "",
+          "nullable": "",
+          "format": "",
+          "validations": "",
+          "validation_url": ""
+        },
+        {
+          "attribute": "Schedule_Price_Indexing_Date_Revised_Continued",
+          "mapping": "Schedule Price Indexing Date Revised Continued",
+          "column_id": 27,
+          "sql_type": "STRING",
+          "description": "Represents any continued date information for the Schedule of Reporting Companies and Price Index Reporting (page 3).",
+          "description_url": "",
+          "identifier_type": "",
+          "nullable": "",
+          "format": "",
+          "validations": "",
+          "validation_url": ""
+        },
+        {
+          "attribute": "Schedule_Price_Indexing_Remarks_Continued",
+          "mapping": "Schedule Price Indexing Remarks Continued",
+          "column_id": 28,
+          "sql_type": "STRING",
+          "description": "Represents any continued remarks or notes related to the Schedule of Reporting Companies and Price Index Reporting (page 3).",
+          "description_url": "",
+          "identifier_type": "",
+          "nullable": "",
+          "format": "",
+          "validations": "",
+          "validation_url": ""
+        },
+        {
+          "attribute": "Schedule_Purchase_And_Sales_Information_Date_Revised",
+          "mapping": "Schedule Purchase And Sales Information Date Revised",
+          "column_id": 29,
+          "sql_type": "STRING",
+          "description": "Represents the revised date for the Purchase and Sales Information (page 4).",
+          "description_url": "",
+          "identifier_type": "",
+          "nullable": "",
+          "format": "",
+          "validations": "",
+          "validation_url": ""
+        },
+        {
+          "attribute": "Schedule_Purchase_And_Sales_Information_Remarks",
+          "mapping": "Schedule Purchase And Sales Information Remarks",
+          "column_id": 30,
+          "sql_type": "STRING",
+          "description": "Represents any remarks or notes related to the Purchase and Sales Information (page 4).",
+          "description_url": "",
+          "identifier_type": "",
+          "nullable": "",
+          "format": "",
+          "validations": "",
+          "validation_url": ""
+        },
+        {
+          "attribute": "Schedule_Reporting_Companies_Date_Revised",
+          "mapping": "Schedule Reporting Companies Date Revised",
+          "column_id": 31,
+          "sql_type": "STRING",
+          "description": "Represents the revised date for the Schedule of Reporting Companies (page 1).",
+          "description_url": "",
+          "identifier_type": "",
+          "nullable": "",
+          "format": "",
+          "validations": "",
+          "validation_url": ""
+        },
+        {
+          "attribute": "NYMEX_Plus_Contracts_Sales",
+          "mapping": "NYMEX Plus Contracts Sales",
+          "column_id": 40,
+          "sql_type": "DOUBLE",
+          "description": "Represents the volume of NYMEX Plus contracts sold in TBtus.",
+          "description_url": "",
+          "identifier_type": "",
+          "nullable": "",
+          "format": "",
+          "validations": "",
+          "validation_url": ""
+        },
+        {
+          "attribute": "NYMEX_Plus_Contracts_Purchases",
+          "mapping": "NYMEX Plus Contracts Purchases",
+          "column_id": 39,
+          "sql_type": "DOUBLE",
+          "description": "Represents the volume of NYMEX Plus contracts purchased in TBtus.",
+          "description_url": "",
+          "identifier_type": "",
+          "nullable": "",
+          "format": "",
+          "validations": "",
+          "validation_url": ""
+        },
+        {
+          "attribute": "Schedule_Reporting_Companies_Remarks",
+          "mapping": "Schedule Reporting Companies Remarks",
+          "column_id": 32,
+          "sql_type": "STRING",
+          "description": "Represents any remarks or notes related to the Schedule of Reporting Companies (page 1).",
+          "description_url": "",
+          "identifier_type": "",
+          "nullable": "",
+          "format": "",
+          "validations": "",
+          "validation_url": ""
+        },
+        {
+          "attribute": "Signature",
+          "mapping": "Signature",
+          "column_id": 33,
+          "sql_type": "STRING",
+          "description": "Represents the typed signature of the company officer for certification.",
+          "description_url": "",
+          "identifier_type": "",
+          "nullable": "",
+          "format": "",
+          "validations": "",
+          "validation_url": ""
+        },
+        {
+          "attribute": "Signature_Date",
+          "mapping": "Signature Date",
+          "column_id": 34,
+          "sql_type": "STRING",
+          "description": "Represents the date when the typed signature was made.",
+          "description_url": "",
+          "identifier_type": "",
+          "nullable": "",
+          "format": "",
+          "validations": "",
+          "validation_url": ""
+        },
+        {
+          "attribute": "Signature_Name",
+          "mapping": "Signature Name",
+          "column_id": 35,
+          "sql_type": "STRING",
+          "description": "Represents the name of the company officer who type signed the document.",
+          "description_url": "",
+          "identifier_type": "",
+          "nullable": "",
+          "format": "",
+          "validations": "",
+          "validation_url": ""
+        },
+        {
+          "attribute": "Signature_Title",
+          "mapping": "Signature Title",
+          "column_id": 36,
+          "sql_type": "STRING",
+          "description": "Represents the title of the company officer whotype  signed the document.",
+          "description_url": "",
+          "identifier_type": "",
+          "nullable": "",
+          "format": "",
+          "validations": "",
+          "validation_url": ""
+        },
+        {
+          "attribute": "Sum_Differences_Explanation_Purchases",
+          "mapping": "Sum Differences Explanation Purchases",
+          "column_id": 37,
+          "sql_type": "STRING",
+          "description": "Represents the explanation of the sum of differences for total purchases.",
+          "description_url": "",
+          "identifier_type": "",
+          "nullable": "",
+          "format": "",
+          "validations": "",
+          "validation_url": ""
+        },
+        {
+          "attribute": "Sum_Differences_Explanation_Sales",
+          "mapping": "Sum Differences Explanation Sales",
+          "column_id": 38,
+          "sql_type": "STRING",
+          "description": "Represents the explanation of the sum of differences for total sales.",
+          "description_url": "",
+          "identifier_type": "",
+          "nullable": "",
+          "format": "",
+          "validations": "",
+          "validation_url": ""
+        },
+        {
+          "attribute": "Volume_TBtu_Purchase",
+          "mapping": "Volume TBtu Purchase",
+          "column_id": 41,
+          "sql_type": "DOUBLE",
+          "description": "Represents the total volume of purchases in TBtus.",
+          "description_url": "",
+          "identifier_type": "",
+          "nullable": "",
+          "format": "",
+          "validations": "",
+          "validation_url": ""
+        },
+        {
+          "attribute": "Volume_TBtu_Sales",
+          "mapping": "Volume TBtu Sales",
+          "column_id": 42,
+          "sql_type": "DOUBLE",
+          "description": "Represents the total volume of sales in TBtus.",
+          "description_url": "",
+          "identifier_type": "",
+          "nullable": "",
+          "format": "",
+          "validations": "",
+          "validation_url": ""
+        },
+        {
+          "attribute": "As_Physical_Basis_Transactions_Purchases",
+          "mapping": "As Physical Basis Transactions Purchases",
+          "column_id": 43,
+          "sql_type": "DOUBLE",
+          "description": "Represents the volume of physical basis purchases in TBtus.",
+          "description_url": "",
+          "identifier_type": "",
+          "nullable": "",
+          "format": "",
+          "validations": "",
+          "validation_url": ""
+        },
+        {
+          "attribute": "Form552_id",
+          "mapping": "Form552 id",
+          "column_id": 1,
+          "sql_type": "BIGINT",
+          "description": "Unique identifier for the FERC Form 552 report.",
+          "description_url": "",
+          "identifier_type": "",
+          "nullable": "",
+          "format": "",
+          "validations": "",
+          "validation_url": ""
+        },
+        {
+          "attribute": "Initial_Submission",
+          "mapping": "Initial Submission",
+          "column_id": 2,
+          "sql_type": "BOOLEAN",
+          "description": "Indicates if the report is the initial submission.",
+          "description_url": "",
+          "identifier_type": "",
+          "nullable": "",
+          "format": "",
+          "validations": "",
+          "validation_url": ""
+        },
+        {
+          "attribute": "Reporting_Co_Is_Affiliate",
+          "mapping": "Reporting Co Is Affiliate",
+          "column_id": 3,
+          "sql_type": "BOOLEAN",
+          "description": "Represents whether the reporting company is an affiliate of the respondent.",
+          "description_url": "",
+          "identifier_type": "",
+          "nullable": "",
+          "format": "",
+          "validations": "",
+          "validation_url": ""
+        },
+        {
+          "attribute": "Reporting_Co_Is_Same_As_Respondent",
+          "mapping": "Reporting Co Is Same As Respondent",
+          "column_id": 4,
+          "sql_type": "BOOLEAN",
+          "description": "Specifies whether the reporting company is the same as the respondent.",
+          "description_url": "",
+          "identifier_type": "",
+          "nullable": "",
+          "format": "",
+          "validations": "",
+          "validation_url": ""
+        },
+        {
+          "attribute": "Resubmission",
+          "mapping": "Resubmission",
+          "column_id": 5,
+          "sql_type": "BOOLEAN",
+          "description": "Indicates whether the report is a resubmission of a previously submitted report.",
+          "description_url": "",
+          "identifier_type": "",
+          "nullable": "",
+          "format": "",
+          "validations": "",
+          "validation_url": ""
+        },
+        {
+          "attribute": "Date_of_Report",
+          "mapping": "Date of Report",
+          "column_id": 6,
+          "sql_type": "STRING",
+          "description": "The date when the report was completed.",
+          "description_url": "",
+          "identifier_type": "",
+          "nullable": "",
+          "format": "",
+          "validations": "",
+          "validation_url": ""
+        },
+        {
+          "attribute": "Revision_No",
+          "mapping": "Revision No",
+          "column_id": 7,
+          "sql_type": "BIGINT",
+          "description": "Represents the revision number of the resubmission.",
+          "description_url": "",
+          "identifier_type": "",
+          "nullable": "",
+          "format": "",
+          "validations": "",
+          "validation_url": ""
+        },
+        {
+          "attribute": "Year_of_Report_End",
+          "mapping": "Year of Report End",
+          "column_id": 8,
+          "sql_type": "BIGINT",
+          "description": "Represents the calendar year of the reported data.",
+          "description_url": "",
+          "identifier_type": "",
+          "nullable": "",
+          "format": "",
+          "validations": "",
+          "validation_url": ""
+        }
+      ],
+      "sorting": [
+        "Year_of_Report_End DESC",
+        "Form552_id DESC"
+      ],
+      "hiddenColumns": "pkid"
+    },
+    "__N_SSP": true
+  },
+  "page": "/[assetSlug]/[setSlug]",
+  "query": {
+    "assetSlug": "form-no.-552-download-data",
+    "setSlug": "form-552-master-table"
+  },
+  "buildId": "s-mNOlCxYgKBHIVXkf4TX",
+  "isFallback": false,
+  "isExperimentalCompile": false,
+  "gssp": true,
+  "scriptLoader": []
+}
